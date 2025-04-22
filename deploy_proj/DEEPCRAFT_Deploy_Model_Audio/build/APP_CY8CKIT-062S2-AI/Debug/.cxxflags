@@ -1,0 +1,1 @@
+-c -mcpu=cortex-m4 --specs=nano.specs -Og -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -ffunction-sections -fdata-sections -ffat-lto-objects -g -Wall -pipe -fno-rtti -fno-exceptions -MMD -MP -MF $out.d -MT $out

@@ -1,0 +1,57 @@
+12:40:41 **** Incremental Build of configuration Debug for project DEEPCRAFT_Deploy_Model_Audio ****
+"C:\\Users\\hossam.batekh\\ModusToolbox\\tools_3.5\\modus-shell\\bin\\make" CY_MAKE_IDE=eclipse CY_IDE_TOOLS_DIR=C:/Users/hossam.batekh/ModusToolbox/tools_3.5 CY_IDE_BT_TOOLS_DIR= -j12 build_proj 
+Tools Directory: C:/Users/hossam.batekh/ModusToolbox/tools_3.5
+Searching installed tools in progress...
+Searching installed tools complete
+NOTE: Using 'C:/Users/hossam.batekh/ModusToolbox/tools_3.5/ninja/ninja.exe' from PATH.
+Generating mtbninja data files...
+Generating mtbninja data complete...
+Toolchain validation: PASS
+Initializing build: mtb-example-ml-deepcraft-deploy-audio Debug APP_CY8CKIT-062S2-AI GCC_ARM
+
+Prebuild operations complete
+# 0: Loading the application in directory 'C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio'
+# 0: Loading the ModusToolbox Technology Packs and Early Access Packs
+# 0: Loading the tools information
+[1/3] Building object file C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/build/Debug/local/models/motor_model.o
+C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/models/motor_model.c: In function 'mtb_model_f32':
+C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/models/motor_model.c:4218:33: warning: passing argument 2 of 'mtb_ml_model_run' from incompatible pointer type [-Wincompatible-pointer-types]
+ 4218 |         mtb_ml_model_run(model, (float*)src);
+      |                                 ^~~~~~~~~~~
+      |                                 |
+      |                                 float *
+In file included from C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/models/motor_model.c:49:
+../mtb_shared/ml-middleware/release-v3.0.1/include/mtb_ml_model.h:221:67: note: expected 'MTB_ML_DATA_T *' {aka 'signed char *'} but argument is of type 'float *'
+  221 | cy_rslt_t mtb_ml_model_run(mtb_ml_model_t *object, MTB_ML_DATA_T *input);
+      |                                                    ~~~~~~~~~~~~~~~^~~~~
+[2/3] Building object file C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/build/Debug/local/main.o
+[3/3] Linking, creating elf file build/APP_CY8CKIT-062S2-AI/Debug/mtb-example-ml-deepcraft-deploy-audio.elf
+C:/Users/hossam.batekh/Infineon/Tools/mtb-gcc-arm-eabi/11.3.1/gcc/bin/arm-none-eabi-objcopy -O ihex C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/build/APP_CY8CKIT-062S2-AI/Debug/mtb-example-ml-deepcraft-deploy-audio.elf C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/build/APP_CY8CKIT-062S2-AI/Debug/mtb-example-ml-deepcraft-deploy-audio.hex
+==============================================================================
+= Build complete =
+==============================================================================
+
+Calculating memory consumption: CY8C624ABZI-S2D44 GCC_ARM
+
+
+   ---------------------------------------------------- 
+  | Section Name         |  Address      |  Size       | 
+   ---------------------------------------------------- 
+  | .cy_m0p_image        |  0x10000000   |  6352       | 
+  | .text                |  0x10002000   |  433832     | 
+  | .ARM.exidx           |  0x1006bea8   |  8          | 
+  | .copy.table          |  0x1006beb0   |  24         | 
+  | .zero.table          |  0x1006bec8   |  8          | 
+  | .data                |  0x080022e0   |  1672       | 
+  | .cy_sharedmem        |  0x08002968   |  8          | 
+  | .noinit              |  0x08002970   |  228        | 
+  | .bss                 |  0x08002a60   |  78996      | 
+  | .heap                |  0x08015ef8   |  952584     | 
+   ---------------------------------------------------- 
+
+  Total Internal Flash (Available)          2097152    
+  Total Internal Flash (Utilized)           443744     
+
+
+12:40:45 Build Finished. 0 errors, 1 warnings. (took 4s.283ms)
+

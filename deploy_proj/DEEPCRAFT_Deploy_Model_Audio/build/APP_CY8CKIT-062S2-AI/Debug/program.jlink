@@ -1,0 +1,6 @@
+Connect
+exec EnableEraseAllFlashBanks
+LoadFile C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/build/last_config/mtb-example-ml-deepcraft-deploy-audio.hex 0 reset
+Reset
+Go
+Exit
