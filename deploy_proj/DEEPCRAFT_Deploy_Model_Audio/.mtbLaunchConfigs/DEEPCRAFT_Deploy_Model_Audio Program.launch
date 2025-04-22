@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.ui.externaltools.ProgramLaunchConfigurationType">
-<stringAttribute key="bad_container_name" value="${cy_prj_path:3c22bbd6-ff0a-4b4c-b24c-9f66f3093444}\.mtbLaunchConfigs"/>
+<stringAttribute key="bad_container_name" value="${cy_prj_path:ddda1cb7-9c64-4f3c-8cef-dbe3f7cddf16}\.mtbLaunchConfigs"/>
 <stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${project}"/>
 <mapAttribute key="org.eclipse.debug.core.environmentVariables">
 <mapEntry key="PATH" value="${cy_tools_path:modus-shell}/bin:${env_var:PATH}"/>
@@ -8,7 +8,7 @@
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LAUNCH_CONFIGURATION_BUILD_SCOPE" value="${none}"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${cy_tools_path:modus-shell}/bin/make${cy_exe_platform_ext}"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="-j12 program"/>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${cy_prj_path:3c22bbd6-ff0a-4b4c-b24c-9f66f3093444}"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${cy_prj_path:ddda1cb7-9c64-4f3c-8cef-dbe3f7cddf16}"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/DEEPCRAFT_Deploy_Model_Audio"/>
 </listAttribute>

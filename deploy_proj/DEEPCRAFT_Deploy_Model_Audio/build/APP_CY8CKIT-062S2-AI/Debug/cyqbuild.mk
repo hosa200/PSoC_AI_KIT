@@ -3,7 +3,6 @@ CY_SEARCH_ALL_FILES:= \
 	.cyignore \
 	.gitignore \
 	.mtbqueryapi \
-	.ninja_log \
 	.project \
 	LICENSE \
 	main.c \
@@ -69,8 +68,8 @@ CY_SEARCH_ALL_FILES:= \
 	libs/mtb.mk \
 	libs/recipe-make-cat1a.mtb \
 	models/code_generation_report.md \
-	models/motor_model.c \
-	models/motor_model.h \
+	models/model.c \
+	models/model.h \
 	../mtb_shared/cmsis/release-v5.8.2/EULA \
 	../mtb_shared/cmsis/release-v5.8.2/LICENSE \
 	../mtb_shared/cmsis/release-v5.8.2/props.json \
@@ -1309,13 +1308,13 @@ CY_SEARCH_ALL_FILES:= \
 	../mtb_shared/core-lib/release-v1.4.3/RELEASE.md \
 	../mtb_shared/core-lib/release-v1.4.3/include/cy_result.h \
 	../mtb_shared/core-lib/release-v1.4.3/include/cy_utils.h \
-	../mtb_shared/core-make/release-v3.6.0/.cyignore \
-	../mtb_shared/core-make/release-v3.6.0/.gitignore \
-	../mtb_shared/core-make/release-v3.6.0/EULA \
-	../mtb_shared/core-make/release-v3.6.0/LICENSE \
-	../mtb_shared/core-make/release-v3.6.0/README.md \
-	../mtb_shared/core-make/release-v3.6.0/RELEASE.md \
-	../mtb_shared/core-make/release-v3.6.0/version.xml \
+	../mtb_shared/core-make/release-v3.6.1/.cyignore \
+	../mtb_shared/core-make/release-v3.6.1/.gitignore \
+	../mtb_shared/core-make/release-v3.6.1/EULA \
+	../mtb_shared/core-make/release-v3.6.1/LICENSE \
+	../mtb_shared/core-make/release-v3.6.1/README.md \
+	../mtb_shared/core-make/release-v3.6.1/RELEASE.md \
+	../mtb_shared/core-make/release-v3.6.1/version.xml \
 	../mtb_shared/mtb-hal-cat1/release-v2.7.0/.cyignore \
 	../mtb_shared/mtb-hal-cat1/release-v2.7.0/EULA \
 	../mtb_shared/mtb-hal-cat1/release-v2.7.0/LICENSE \

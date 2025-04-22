@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ImagimobStudio version="0.9">
+  <Timeline id="3bf2b4a6-0c39-40b9-9c02-3a9c7e6743bf">
+    <Tracks>
+      <Track name="heavyload_5" type="audiowav" isLabelTrack="False">
+        <PayloadFile>heavyload_5.wav</PayloadFile>
+      </Track>
+      <Track name="label" type="labelcsv">
+        <PayloadFile>label.label</PayloadFile>
+      </Track>
+    </Tracks>
+  </Timeline>
+</ImagimobStudio>

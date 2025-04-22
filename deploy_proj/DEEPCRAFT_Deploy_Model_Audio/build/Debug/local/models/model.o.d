@@ -1,5 +1,5 @@
-C:/Users/hossam.batekh/mtw_AI/DEEPCRAFT_Deploy_Model_Audio/build/Debug/local/models/model.o: \
- C:/Users/hossam.batekh/mtw_AI/DEEPCRAFT_Deploy_Model_Audio/models/model.c \
+C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/build/Debug/local/models/model.o: \
+ C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/models/model.c \
  ../mtb_shared/cmsis/release-v5.8.2/COMPONENT_CMSIS_DSP/Include/arm_math.h \
  ../mtb_shared/cmsis/release-v5.8.2/COMPONENT_CMSIS_DSP/Include/arm_math_types.h \
  ../mtb_shared/cmsis/release-v5.8.2/Core/Include/cmsis_compiler.h \
@@ -37,7 +37,7 @@ C:/Users/hossam.batekh/mtw_AI/DEEPCRAFT_Deploy_Model_Audio/build/Debug/local/mod
  ../mtb_shared/ml-middleware/release-v3.0.1/include/mtb_ml_common.h \
  ../mtb_shared/core-lib/release-v1.4.3/include/cy_result.h \
  ../mtb_shared/ml-middleware/release-v3.0.1/source/COMPONENT_ML_TFLM/mtb_ml_model_defs.h \
- C:/Users/hossam.batekh/mtw_AI/DEEPCRAFT_Deploy_Model_Audio/models/model.h
+ C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/models/model.h
 ../mtb_shared/cmsis/release-v5.8.2/COMPONENT_CMSIS_DSP/Include/arm_math.h:
 ../mtb_shared/cmsis/release-v5.8.2/COMPONENT_CMSIS_DSP/Include/arm_math_types.h:
 ../mtb_shared/cmsis/release-v5.8.2/Core/Include/cmsis_compiler.h:
@@ -75,4 +75,4 @@ C:/Users/hossam.batekh/mtw_AI/DEEPCRAFT_Deploy_Model_Audio/build/Debug/local/mod
 ../mtb_shared/ml-middleware/release-v3.0.1/include/mtb_ml_common.h:
 ../mtb_shared/core-lib/release-v1.4.3/include/cy_result.h:
 ../mtb_shared/ml-middleware/release-v3.0.1/source/COMPONENT_ML_TFLM/mtb_ml_model_defs.h:
-C:/Users/hossam.batekh/mtw_AI/DEEPCRAFT_Deploy_Model_Audio/models/model.h:
+C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/models/model.h:

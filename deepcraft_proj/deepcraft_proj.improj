@@ -1,0 +1,839 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ImagimobStudio version="1.1.0">
+  <Job id="aa8c44bc-1f8a-11f0-8919-ed3db98ead2a" />
+  <Preprocessor inshape="[1]" intype="Float32" infreq="16000" outshape="[50,40]" outtype="Float32">
+    <Unit id="Core.Packages.SpeechAudio">
+      <Argument param="output_freq" type="Double">100</Argument>
+      <Argument param="output_features" type="Int32">40</Argument>
+      <Argument param="low_cut_freq" type="Int32">300</Argument>
+      <Argument param="high_cut_freq" type="Int32">8000</Argument>
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="time_input" type="String">time</Argument>
+      <Argument param="output" type="String">data</Argument>
+      <Argument param="time_output" type="String">time</Argument>
+    </Unit>
+    <Unit id="Core.Packages.ContextualWindow">
+      <Argument param="contextual_length_sec" type="Double">0.5</Argument>
+      <Argument param="prediction_freq" type="Double">7</Argument>
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="time_input" type="String">time</Argument>
+      <Argument param="output" type="String">data</Argument>
+      <Argument param="time_output" type="String">time</Argument>
+    </Unit>
+  </Preprocessor>
+  <ModelFactory>
+    <Epochs>100</Epochs>
+    <BatchSize>128</BatchSize>
+    <SplitCount>16</SplitCount>
+    <Patience>20</Patience>
+    <AppendModels>True</AppendModels>
+    <LossFunction>CategoricalCrossentropy</LossFunction>
+    <FactoryOptions>None</FactoryOptions>
+    <HardwareType>Default</HardwareType>
+    <TrainingEnvironment>
+    </TrainingEnvironment>
+    <ModelFamily>Conv1D</ModelFamily>
+    <ModelFlavor>SmallKern</ModelFlavor>
+    <ClassifierType>Dense</ClassifierType>
+    <Optimization>Balanced</Optimization>
+    <Pooling>True</Pooling>
+    <Downscale>False</Downscale>
+    <LearnRate>Mid</LearnRate>
+    <RegularizationFactor>Mid</RegularizationFactor>
+    <LastNetworkInputShape>[50,40]</LastNetworkInputShape>
+    <LastClassCount>5</LastClassCount>
+    <Optimizer>
+      <LearningRate>0.001</LearningRate>
+      <WeightDecay>0.0001</WeightDecay>
+    </Optimizer>
+    <BuildSteps>
+      <Training />
+      <ConfusionMatrix />
+    </BuildSteps>
+  </ModelFactory>
+  <Models>
+    <Model name="conv1d-medium-balanced-0" id="4bd11340-db49-4d42-9802-d43eec30c8df">
+      <LossFunction>CategoricalCrossentropy</LossFunction>
+      <Epochs>100</Epochs>
+      <BatchSize>128</BatchSize>
+      <SplitCount>16</SplitCount>
+      <Patience>20</Patience>
+      <TrainingEnvironment>
+      </TrainingEnvironment>
+      <Optimizer>
+        <LearningRate>0.004</LearningRate>
+        <WeightDecay>0.001</WeightDecay>
+      </Optimizer>
+      <Network inshape="[50,40]" intype="Float32" infreq="0" outshape="[5]" outtype="Float32">
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">12</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">24</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">24</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.MaxPool1D">
+          <Argument param="pool_size" type="Int32">2</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">valid</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.05</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.MaxPool1D">
+          <Argument param="pool_size" type="Int32">2</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">valid</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.05</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Flatten" />
+        <Unit id="Core.Layers.Dense">
+          <Argument param="units" type="Int32">50</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.2</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dense">
+          <Argument param="units" type="Int32">5</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">softmax</Argument>
+        </Unit>
+      </Network>
+      <BuildSteps>
+        <Training />
+        <ConfusionMatrix />
+      </BuildSteps>
+      <SymbolWeights override="False">
+        <SymbolWeight symbol="other" weight="1" />
+        <SymbolWeight symbol="good" weight="1" />
+        <SymbolWeight symbol="broken" weight="1" />
+        <SymbolWeight symbol="heavyload" weight="1" />
+      </SymbolWeights>
+      <Preprocessor override="False" inshape="[1]" intype="Float32" infreq="16000" outshape="[50,40]" outtype="Float32">
+        <Unit id="Core.Packages.SpeechAudio">
+          <Argument param="output_freq" type="Double">100</Argument>
+          <Argument param="output_features" type="Int32">40</Argument>
+          <Argument param="low_cut_freq" type="Int32">300</Argument>
+          <Argument param="high_cut_freq" type="Int32">8000</Argument>
+          <Argument param="input" type="String">data</Argument>
+          <Argument param="time_input" type="String">time</Argument>
+          <Argument param="output" type="String">data</Argument>
+          <Argument param="time_output" type="String">time</Argument>
+        </Unit>
+        <Unit id="Core.Packages.ContextualWindow">
+          <Argument param="contextual_length_sec" type="Double">0.5</Argument>
+          <Argument param="prediction_freq" type="Double">7</Argument>
+          <Argument param="input" type="String">data</Argument>
+          <Argument param="time_input" type="String">time</Argument>
+          <Argument param="output" type="String">data</Argument>
+          <Argument param="time_output" type="String">time</Argument>
+        </Unit>
+      </Preprocessor>
+      <Postprocessor override="False" inshape="[128,3]" intype="Float32" infreq="1" outshape="[128,3]" outtype="Float32" />
+    </Model>
+    <Model name="conv1d-medium-balanced-1" id="ac635ee9-88f9-42a7-a054-ed958fcd0c78">
+      <LossFunction>CategoricalCrossentropy</LossFunction>
+      <Epochs>100</Epochs>
+      <BatchSize>128</BatchSize>
+      <SplitCount>16</SplitCount>
+      <Patience>20</Patience>
+      <TrainingEnvironment>
+      </TrainingEnvironment>
+      <Optimizer>
+        <LearningRate>0.004</LearningRate>
+        <WeightDecay>0.001</WeightDecay>
+      </Optimizer>
+      <Network inshape="[50,40]" intype="Float32" infreq="0" outshape="[5]" outtype="Float32">
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">16</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">16</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">16</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.MaxPool1D">
+          <Argument param="pool_size" type="Int32">2</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">valid</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.05</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.MaxPool1D">
+          <Argument param="pool_size" type="Int32">2</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">valid</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.05</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Flatten" />
+        <Unit id="Core.Layers.Dense">
+          <Argument param="units" type="Int32">50</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.2</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dense">
+          <Argument param="units" type="Int32">5</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">softmax</Argument>
+        </Unit>
+      </Network>
+      <BuildSteps>
+        <Training />
+        <ConfusionMatrix />
+      </BuildSteps>
+      <SymbolWeights override="False">
+        <SymbolWeight symbol="other" weight="1" />
+        <SymbolWeight symbol="good" weight="1" />
+        <SymbolWeight symbol="broken" weight="1" />
+        <SymbolWeight symbol="heavyload" weight="1" />
+      </SymbolWeights>
+      <Preprocessor override="False" inshape="[1]" intype="Float32" infreq="16000" outshape="[50,40]" outtype="Float32">
+        <Unit id="Core.Packages.SpeechAudio">
+          <Argument param="output_freq" type="Double">100</Argument>
+          <Argument param="output_features" type="Int32">40</Argument>
+          <Argument param="low_cut_freq" type="Int32">300</Argument>
+          <Argument param="high_cut_freq" type="Int32">8000</Argument>
+          <Argument param="input" type="String">data</Argument>
+          <Argument param="time_input" type="String">time</Argument>
+          <Argument param="output" type="String">data</Argument>
+          <Argument param="time_output" type="String">time</Argument>
+        </Unit>
+        <Unit id="Core.Packages.ContextualWindow">
+          <Argument param="contextual_length_sec" type="Double">0.5</Argument>
+          <Argument param="prediction_freq" type="Double">7</Argument>
+          <Argument param="input" type="String">data</Argument>
+          <Argument param="time_input" type="String">time</Argument>
+          <Argument param="output" type="String">data</Argument>
+          <Argument param="time_output" type="String">time</Argument>
+        </Unit>
+      </Preprocessor>
+      <Postprocessor override="False" inshape="[128,3]" intype="Float32" infreq="1" outshape="[128,3]" outtype="Float32" />
+    </Model>
+    <Model name="conv1d-medium-balanced-2" id="d302a410-9145-46a7-bc95-2df0121197bc">
+      <LossFunction>CategoricalCrossentropy</LossFunction>
+      <Epochs>100</Epochs>
+      <BatchSize>128</BatchSize>
+      <SplitCount>16</SplitCount>
+      <Patience>20</Patience>
+      <TrainingEnvironment>
+      </TrainingEnvironment>
+      <Optimizer>
+        <LearningRate>0.004</LearningRate>
+        <WeightDecay>0.001</WeightDecay>
+      </Optimizer>
+      <Network inshape="[50,40]" intype="Float32" infreq="0" outshape="[5]" outtype="Float32">
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">16</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.MaxPool1D">
+          <Argument param="pool_size" type="Int32">2</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">valid</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.05</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.MaxPool1D">
+          <Argument param="pool_size" type="Int32">2</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">valid</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.05</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Flatten" />
+        <Unit id="Core.Layers.Dense">
+          <Argument param="units" type="Int32">50</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.2</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dense">
+          <Argument param="units" type="Int32">5</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">softmax</Argument>
+        </Unit>
+      </Network>
+      <BuildSteps>
+        <Training />
+        <ConfusionMatrix />
+      </BuildSteps>
+      <SymbolWeights override="False">
+        <SymbolWeight symbol="other" weight="1" />
+        <SymbolWeight symbol="good" weight="1" />
+        <SymbolWeight symbol="broken" weight="1" />
+        <SymbolWeight symbol="heavyload" weight="1" />
+      </SymbolWeights>
+      <Preprocessor override="False" inshape="[1]" intype="Float32" infreq="16000" outshape="[50,40]" outtype="Float32">
+        <Unit id="Core.Packages.SpeechAudio">
+          <Argument param="output_freq" type="Double">100</Argument>
+          <Argument param="output_features" type="Int32">40</Argument>
+          <Argument param="low_cut_freq" type="Int32">300</Argument>
+          <Argument param="high_cut_freq" type="Int32">8000</Argument>
+          <Argument param="input" type="String">data</Argument>
+          <Argument param="time_input" type="String">time</Argument>
+          <Argument param="output" type="String">data</Argument>
+          <Argument param="time_output" type="String">time</Argument>
+        </Unit>
+        <Unit id="Core.Packages.ContextualWindow">
+          <Argument param="contextual_length_sec" type="Double">0.5</Argument>
+          <Argument param="prediction_freq" type="Double">7</Argument>
+          <Argument param="input" type="String">data</Argument>
+          <Argument param="time_input" type="String">time</Argument>
+          <Argument param="output" type="String">data</Argument>
+          <Argument param="time_output" type="String">time</Argument>
+        </Unit>
+      </Preprocessor>
+      <Postprocessor override="False" inshape="[128,3]" intype="Float32" infreq="1" outshape="[128,3]" outtype="Float32" />
+    </Model>
+    <Model name="conv1d-medium-balanced-3" id="fa688be3-80e2-4754-a1f2-9c3940e5cc70">
+      <LossFunction>CategoricalCrossentropy</LossFunction>
+      <Epochs>100</Epochs>
+      <BatchSize>128</BatchSize>
+      <SplitCount>16</SplitCount>
+      <Patience>20</Patience>
+      <TrainingEnvironment>
+      </TrainingEnvironment>
+      <Optimizer>
+        <LearningRate>0.004</LearningRate>
+        <WeightDecay>0.001</WeightDecay>
+      </Optimizer>
+      <Network inshape="[50,40]" intype="Float32" infreq="0" outshape="[5]" outtype="Float32">
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">16</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">32</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.MaxPool1D">
+          <Argument param="pool_size" type="Int32">2</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">valid</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.05</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">64</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Convolution1D">
+          <Argument param="filters" type="Int32">64</Argument>
+          <Argument param="kernel_size" type="Int32">3</Argument>
+          <Argument param="strides" type="Int32">1</Argument>
+          <Argument param="padding" type="String">same</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.MaxPool1D">
+          <Argument param="pool_size" type="Int32">2</Argument>
+          <Argument param="strides" type="Int32">2</Argument>
+          <Argument param="padding" type="String">valid</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.05</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Flatten" />
+        <Unit id="Core.Layers.Dense">
+          <Argument param="units" type="Int32">50</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+        </Unit>
+        <Unit id="Core.Layers.BatchNormalization">
+          <Argument param="epsilon" type="Double">0.001</Argument>
+          <Argument param="axis" type="Int32">-1</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">relu</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dropout">
+          <Argument param="rate" type="Double">0.2</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Dense">
+          <Argument param="units" type="Int32">5</Argument>
+          <Argument param="use_bias" type="Boolean">False</Argument>
+          <Argument param="activation" type="String">linear</Argument>
+        </Unit>
+        <Unit id="Core.Layers.Activation">
+          <Argument param="activation" type="String">softmax</Argument>
+        </Unit>
+      </Network>
+      <BuildSteps>
+        <Training />
+        <ConfusionMatrix />
+      </BuildSteps>
+      <SymbolWeights override="False">
+        <SymbolWeight symbol="other" weight="1" />
+        <SymbolWeight symbol="good" weight="1" />
+        <SymbolWeight symbol="broken" weight="1" />
+        <SymbolWeight symbol="heavyload" weight="1" />
+      </SymbolWeights>
+      <Preprocessor override="False" inshape="[1]" intype="Float32" infreq="16000" outshape="[50,40]" outtype="Float32">
+        <Unit id="Core.Packages.SpeechAudio">
+          <Argument param="output_freq" type="Double">100</Argument>
+          <Argument param="output_features" type="Int32">40</Argument>
+          <Argument param="low_cut_freq" type="Int32">300</Argument>
+          <Argument param="high_cut_freq" type="Int32">8000</Argument>
+          <Argument param="input" type="String">data</Argument>
+          <Argument param="time_input" type="String">time</Argument>
+          <Argument param="output" type="String">data</Argument>
+          <Argument param="time_output" type="String">time</Argument>
+        </Unit>
+        <Unit id="Core.Packages.ContextualWindow">
+          <Argument param="contextual_length_sec" type="Double">0.5</Argument>
+          <Argument param="prediction_freq" type="Double">7</Argument>
+          <Argument param="input" type="String">data</Argument>
+          <Argument param="time_input" type="String">time</Argument>
+          <Argument param="output" type="String">data</Argument>
+          <Argument param="time_output" type="String">time</Argument>
+        </Unit>
+      </Preprocessor>
+      <Postprocessor override="False" inshape="[128,3]" intype="Float32" infreq="1" outshape="[128,3]" outtype="Float32" />
+    </Model>
+  </Models>
+  <Database balance="LabelCount" redistributionScope="Everything">
+    <SymbolMap>
+      <Symbol name="other" id="1" weight="1" />
+      <Symbol name="good" id="2" weight="1" />
+      <Symbol name="broken" id="3" weight="1" />
+      <Symbol name="heavyload" id="4" weight="1" />
+    </SymbolMap>
+    <DataSet id="unassigned" targetSize="0" labels="Unassigned" />
+    <DataSet id="train" targetSize="0.7043887809206872" labels="Complete">
+      <Session name="good_5" sessionId="b75faa18-3f55-4b21-a151-04b8788c1c0a" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="good_5" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495317024679881" start="0" length="63.161">/Data/engine1_good/good_5/good_5.wav</DataFile>
+        <SessionFile>/Data/engine1_good/good_5/good_5.imsession</SessionFile>
+        <LabelFile modified="5250495323111659515">/Data/engine1_good/good_5/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="63.158">good</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="good_1" sessionId="f346732f-cf68-4e28-b858-ee5a72d08331" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="good_1" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495317024563125" start="0" length="63.158">/Data/engine1_good/good_1/good_1.wav</DataFile>
+        <SessionFile>/Data/engine1_good/good_1/good_1.imsession</SessionFile>
+        <LabelFile modified="5250495322365247075">/Data/engine1_good/good_1/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="63.158">good</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="heavyload_4" sessionId="77aa1570-f8d7-4b77-9cdd-6a6245211347" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="heavyload_4" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495319121539942" start="0" length="77.154">/Data/engine3_heavyload/heavyload_4/heavyload_4.wav</DataFile>
+        <SessionFile>/Data/engine3_heavyload/heavyload_4/heavyload_4.imsession</SessionFile>
+        <LabelFile modified="5250495325276965956">/Data/engine3_heavyload/heavyload_4/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="77.154">heavyload</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="other_1ec1" sessionId="3eac1483-48fe-488d-bfd6-b4c341555280" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="data" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495294556979683" start="0" length="22.7146875">/Data/other/other_1ec1/data.wav</DataFile>
+        <SessionFile>/Data/other/other_1ec1/other_1ec1.imsession</SessionFile>
+        <LabelFile modified="5250495297710654203">/Data/other/other_1ec1/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="22.714">other</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="heavyload_1" sessionId="791f97a8-105b-4e42-b756-68a17b9a94c9" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="heavyload_1" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495319121462076" start="0" length="77.154">/Data/engine3_heavyload/heavyload_1/heavyload_1.wav</DataFile>
+        <SessionFile>/Data/engine3_heavyload/heavyload_1/heavyload_1.imsession</SessionFile>
+        <LabelFile modified="5250495324989124959">/Data/engine3_heavyload/heavyload_1/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="77.154">heavyload</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="other_4b0d" sessionId="967888b5-2727-4381-af79-7e1c4a3912ab" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="data" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495294557359278" start="0" length="21.8136875">/Data/other/other_4b0d/data.wav</DataFile>
+        <SessionFile>/Data/other/other_4b0d/other_4b0d.imsession</SessionFile>
+        <LabelFile modified="5250495297982021875">/Data/other/other_4b0d/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="21.813">other</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="heavyload_5" sessionId="3bf2b4a6-0c39-40b9-9c02-3a9c7e6743bf" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="heavyload_5" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495319121578892" start="0" length="77.155">/Data/engine3_heavyload/heavyload_5/heavyload_5.wav</DataFile>
+        <SessionFile>/Data/engine3_heavyload/heavyload_5/heavyload_5.imsession</SessionFile>
+        <LabelFile modified="5250495325333032777">/Data/engine3_heavyload/heavyload_5/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="77.154">heavyload</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="good_2" sessionId="8c69995d-76ac-4fda-9587-d25f83bb545b" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="good_2" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495317024582562" start="0" length="63.158">/Data/engine1_good/good_2/good_2.wav</DataFile>
+        <SessionFile>/Data/engine1_good/good_2/good_2.imsession</SessionFile>
+        <LabelFile modified="5250495322547449381">/Data/engine1_good/good_2/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="63.158">good</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="other_a5fa" sessionId="d687950e-ae2b-4318-baaf-da2aa8ea836c" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="data" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495294557924755" start="0" length="4.358">/Data/other/other_a5fa/data.wav</DataFile>
+        <SessionFile>/Data/other/other_a5fa/other_a5fa.imsession</SessionFile>
+        <LabelFile modified="5250495299118221938">/Data/other/other_a5fa/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="4.358">other</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="broken_3" sessionId="b52a37dd-dd8d-4d74-b6b0-1e65f3505ff0" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="broken_3" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495318747924398" start="0" length="74.582">/Data/engine2_broken/broken_3/broken_3.wav</DataFile>
+        <SessionFile>/Data/engine2_broken/broken_3/broken_3.imsession</SessionFile>
+        <LabelFile modified="5250495323921823944">/Data/engine2_broken/broken_3/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="74.581">broken</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="broken_2" sessionId="047f25ee-13cd-4586-a34d-6d70933e1efb" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="broken_2" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495318747885461" start="0" length="74.582">/Data/engine2_broken/broken_2/broken_2.wav</DataFile>
+        <SessionFile>/Data/engine2_broken/broken_2/broken_2.imsession</SessionFile>
+        <LabelFile modified="5250495323863870150">/Data/engine2_broken/broken_2/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="74.581">broken</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="broken_4" sessionId="8f5957b7-b6c4-42b0-bf0a-569d96a3e9b5" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="broken_4" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495318747973068" start="0" length="74.582">/Data/engine2_broken/broken_4/broken_4.wav</DataFile>
+        <SessionFile>/Data/engine2_broken/broken_4/broken_4.imsession</SessionFile>
+        <LabelFile modified="5250495323981039243">/Data/engine2_broken/broken_4/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="74.581">broken</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+    </DataSet>
+    <DataSet id="validation" targetSize="0.14987807296561234" labels="Complete">
+      <Session name="heavyload_2" sessionId="fb5edc89-d398-458f-ae49-7175cb5c9634" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="heavyload_2" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495319121481546" start="0" length="77.154">/Data/engine3_heavyload/heavyload_2/heavyload_2.wav</DataFile>
+        <SessionFile>/Data/engine3_heavyload/heavyload_2/heavyload_2.imsession</SessionFile>
+        <LabelFile modified="5250495325162929324">/Data/engine3_heavyload/heavyload_2/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="77.154">heavyload</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="other_5cf3" sessionId="367aee3c-66a5-4bba-b5ad-eb0be2a0bd8a" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="data" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495294557856612" start="0" length="24.8533125">/Data/other/other_5cf3/data.wav</DataFile>
+        <SessionFile>/Data/other/other_5cf3/other_5cf3.imsession</SessionFile>
+        <LabelFile modified="5250495300527623696">/Data/other/other_5cf3/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="24.853">other</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="broken_5" sessionId="844e5f15-d5bf-4a86-896e-3b2008c14c5c" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="broken_5" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495318748021728" start="0" length="74.584">/Data/engine2_broken/broken_5/broken_5.wav</DataFile>
+        <SessionFile>/Data/engine2_broken/broken_5/broken_5.imsession</SessionFile>
+        <LabelFile modified="5250495324447212609">/Data/engine2_broken/broken_5/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="74.581">broken</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="good_3" sessionId="347e36bc-37d6-4d53-9f30-f7db205b53b4" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="good_3" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495317024621497" start="0" length="63.158">/Data/engine1_good/good_3/good_3.wav</DataFile>
+        <SessionFile>/Data/engine1_good/good_3/good_3.imsession</SessionFile>
+        <LabelFile modified="5250495322819039294">/Data/engine1_good/good_3/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="63.158">good</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+    </DataSet>
+    <DataSet id="test" targetSize="0.1457331461137004" labels="Complete">
+      <Session name="heavyload_3" sessionId="2c228e2d-9cdc-40cd-b814-d2baa96f5ddf" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="True" labelTrack="label" dataTrack="heavyload_3" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495319121510740" start="0" length="77.154">/Data/engine3_heavyload/heavyload_3/heavyload_3.wav</DataFile>
+        <SessionFile>/Data/engine3_heavyload/heavyload_3/heavyload_3.imsession</SessionFile>
+        <LabelFile modified="5250495325217876964">/Data/engine3_heavyload/heavyload_3/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="77.154">heavyload</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="other_0d98" sessionId="30a4702a-0155-4065-9634-499b40aa4eab" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="data" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495294556463962" start="0" length="122.7306875">/Data/other/other_0d98/data.wav</DataFile>
+        <SessionFile>/Data/other/other_0d98/other_0d98.imsession</SessionFile>
+        <LabelFile modified="5250495297500272342">/Data/other/other_0d98/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="122.73">other</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="broken_1" sessionId="023004d4-ce03-4e9b-93be-2bbd3318ae8a" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="broken_1" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495318747856263" start="0" length="74.582">/Data/engine2_broken/broken_1/broken_1.wav</DataFile>
+        <SessionFile>/Data/engine2_broken/broken_1/broken_1.imsession</SessionFile>
+        <LabelFile modified="5250495323712286362">/Data/engine2_broken/broken_1/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="74.581">broken</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+      <Session name="good_4" sessionId="b1a85cf0-e450-4d80-a7d9-26504dcf8fa0" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="good_4" tags="None">
+        <DataFile shape="[1]" samplerate="16000" modified="5250495317024650745" start="0" length="63.158">/Data/engine1_good/good_4/good_4.wav</DataFile>
+        <SessionFile>/Data/engine1_good/good_4/good_4.imsession</SessionFile>
+        <LabelFile modified="5250495322888582342">/Data/engine1_good/good_4/label.label</LabelFile>
+        <Labels>
+          <Label count="1" length="63.158">good</Label>
+        </Labels>
+        <CustomColumnValues />
+      </Session>
+    </DataSet>
+  </Database>
+</ImagimobStudio>

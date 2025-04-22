@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="ilg.gnumcueclipse.debug.gdbjtag.openocd.launchConfigurationType">
-<stringAttribute key="com.cypress.studio.launch.owner.0" value="3c22bbd6-ff0a-4b4c-b24c-9f66f3093444"/>
+<stringAttribute key="com.cypress.studio.launch.owner.0" value="ddda1cb7-9c64-4f3c-8cef-dbe3f7cddf16"/>
 <booleanAttribute key="com.cypress.studio.launch.hide" value="true"/>
 <stringAttribute key="com.cypress.studio.launch.mode" value="debug"/>
 <booleanAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.doContinue" value="true"/>
@@ -24,8 +24,8 @@
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherInitCommands" value=""/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherRunCommands" value="flushregs&#13;&#10;mon gdb_sync&#13;&#10;stepi"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.secondResetType" value="run"/>
-<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.svdPath" value="${cy_prj_path:3c22bbd6-ff0a-4b4c-b24c-9f66f3093444}/../mtb_shared/mtb-pdl-cat1/release-v3.16.0/devices/COMPONENT_CAT1A/svd/psoc6_02.svd"/>
-<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value="${cy_prj_path:3c22bbd6-ff0a-4b4c-b24c-9f66f3093444}/build/last_config/mtb-example-ml-deepcraft-deploy-audio.hex"/>
+<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.svdPath" value="${cy_prj_path:ddda1cb7-9c64-4f3c-8cef-dbe3f7cddf16}/../mtb_shared/mtb-pdl-cat1/release-v3.16.0/devices/COMPONENT_CAT1A/svd/psoc6_02.svd"/>
+<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value="${cy_prj_path:ddda1cb7-9c64-4f3c-8cef-dbe3f7cddf16}/build/last_config/mtb-example-ml-deepcraft-deploy-audio.hex"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageOffset" value=""/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.ipAddress" value="localhost"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.jtagDevice" value="GNU MCU OpenOCD"/>
@@ -37,7 +37,7 @@
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setResume" value="false"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setStopAt" value="false"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.stopAt" value=""/>
-<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsFileName" value="${cy_prj_path:3c22bbd6-ff0a-4b4c-b24c-9f66f3093444}/build/last_config/mtb-example-ml-deepcraft-deploy-audio.elf"/>
+<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsFileName" value="${cy_prj_path:ddda1cb7-9c64-4f3c-8cef-dbe3f7cddf16}/build/last_config/mtb-example-ml-deepcraft-deploy-audio.elf"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsOffset" value=""/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForImage" value="true"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForSymbols" value="true"/>
@@ -48,7 +48,7 @@
 <booleanAttribute key="org.eclipse.cdt.dsf.gdb.UPDATE_THREADLIST_ON_SUSPEND" value="false"/>
 <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
 <stringAttribute key="org.eclipse.cdt.launch.COREFILE_PATH" value=""/>
-<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="${cy_prj_path:3c22bbd6-ff0a-4b4c-b24c-9f66f3093444}/build/last_config/mtb-example-ml-deepcraft-deploy-audio.elf"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="${cy_prj_path:ddda1cb7-9c64-4f3c-8cef-dbe3f7cddf16}/build/last_config/mtb-example-ml-deepcraft-deploy-audio.elf"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="DEEPCRAFT_Deploy_Model_Audio"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">

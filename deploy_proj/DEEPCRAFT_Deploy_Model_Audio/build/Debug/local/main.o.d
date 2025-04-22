@@ -249,7 +249,7 @@ C:/SWs/AI/PSoC_AI_KIT/deploy_proj/DEEPCRAFT_Deploy_Model_Audio/build/Debug/local
  bsps/TARGET_APP_CY8CKIT-062S2-AI/config/GeneratedSource/cycfg_clocks.h \
  bsps/TARGET_APP_CY8CKIT-062S2-AI/config/GeneratedSource/cycfg_peripherals.h \
  ../mtb_shared/retarget-io/release-v1.7.0/include/cy_retarget_io.h \
- models/motor_model.h
+ models/model.h
 ../mtb_shared/mtb-hal-cat1/release-v2.7.0/include/cyhal.h:
 ../mtb_shared/mtb-hal-cat1/release-v2.7.0/include/cyhal_general_types.h:
 ../mtb_shared/core-lib/release-v1.4.3/include/cy_result.h:
@@ -499,4 +499,4 @@ bsps/TARGET_APP_CY8CKIT-062S2-AI/config/GeneratedSource/cycfg_pins.h:
 bsps/TARGET_APP_CY8CKIT-062S2-AI/config/GeneratedSource/cycfg_clocks.h:
 bsps/TARGET_APP_CY8CKIT-062S2-AI/config/GeneratedSource/cycfg_peripherals.h:
 ../mtb_shared/retarget-io/release-v1.7.0/include/cy_retarget_io.h:
-models/motor_model.h:
+models/model.h:
